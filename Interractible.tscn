@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Interractible.gd" type="Script" id=1]
+[ext_resource path="res://outline2D.shader" type="Shader" id=2]
+[ext_resource path="res://OutlineInteract.gd" type="Script" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[node name="Interractible" type="Node2D" groups=[
+"interractible",
+]]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="Sprite"]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_CollisionShape2D_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_Hitbox_body_exited"]
