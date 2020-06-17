@@ -22,7 +22,7 @@ func outline(is_outlined, fading_time=1):
 		col1 = Color(1, 1, 1, 1)
 		
 	if fading_time == 0:
-		$Sprite.material.set_shader_param("line_color", col2)
+		#$Sprite.material.set_shader_param("line_color", col2)
 		return
 		
 	$Sprite/Tween.interpolate_property($Sprite.material, "shader_param/line_color", col1, col2, fading_time, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -46,3 +46,14 @@ func _on_CollisionShape2D_body_entered(body):
 func _on_Hitbox_body_exited(body):
 	if (body.is_in_group("player")):
 		outline(false, 0.5)
+
+func _on_Hitbox_mouse_entered():
+	outline(true, 0.5)
+
+
+func _on_Hitbox_mouse_exited():
+	outline(false, 0.5)
+	
+func interact(player):
+	print(player, " is interracting with me (", self, ")")
+	pass
