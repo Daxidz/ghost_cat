@@ -9,7 +9,7 @@ shader = ExtResource( 2 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[node name="Interractible" type="Node2D" groups=[
+[node name="Hitbox" type="Area2D" groups=[
 "interractible",
 ]]
 script = ExtResource( 1 )
@@ -20,14 +20,6 @@ script = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="Sprite"]
 
-[node name="Hitbox" type="Area2D" parent="." groups=[
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
 "interractible",
 ]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" groups=[
-"interractible",
-]]
-[connection signal="body_entered" from="Hitbox" to="." method="_on_CollisionShape2D_body_entered"]
-[connection signal="body_exited" from="Hitbox" to="." method="_on_Hitbox_body_exited"]
-[connection signal="mouse_entered" from="Hitbox" to="." method="_on_Hitbox_mouse_entered"]
-[connection signal="mouse_exited" from="Hitbox" to="." method="_on_Hitbox_mouse_exited"]

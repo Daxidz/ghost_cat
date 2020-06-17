@@ -15,7 +15,9 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if interactibles.size() > 0:
+			print(interactibles)
 			var interactible = interactibles[0]
+			print(interactible)
 			if (interactible.has_method("interact")):
 				print("I'm interacting with ", interactible)
 				interactible.interact(self)
@@ -36,7 +38,7 @@ func _physics_process(delta):
 
 
 func _on_Area2D_area_entered(area):
-	print(area)
+	print(area, area.get_groups())
 	if (area.is_in_group("interractible")):
 		interactibles.push_back(area)
 	
