@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/sprites/misc/godsray.png" type="Texture" id=1]
+[ext_resource path="res://world/environement/GodsRay.gd" type="Script" id=2]
+
+[node name="GodsRay" type="Light2D"]
+texture = ExtResource( 1 )
+shadow_enabled = true
+shadow_gradient_length = 20.0
+shadow_filter = 5
+shadow_filter_smooth = 5.8
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

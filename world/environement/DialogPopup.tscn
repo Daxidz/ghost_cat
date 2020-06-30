@@ -1,0 +1,24 @@
+[gd_scene format=2]
+
+[node name="PanelContainer" type="PanelContainer"]
+margin_right = 86.0
+margin_bottom = 107.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 79.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "sdadasdasdasdasdasdsdasddasdscdscs
+"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

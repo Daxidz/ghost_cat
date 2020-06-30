@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/rooms/cuisine/oven.png" type="Texture" id=2]
+[ext_resource path="res://world/rooms/cuisine/Four.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
+
+
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.585185 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.501961, 0.490196, 0.490196, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 3, 2, 1 )
+flag_disable_z = true
+direction = Vector3( 1, -1, 0 )
+spread = 10.53
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 1.0
+color_ramp = SubResource( 5 )
+
+[node name="Four" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="1"]
+anims/open = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 10.7954, 12.4563 )
+shape = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="." index="2"]
+position = Vector2( 4.9825, -3.986 )
+emitting = false
+amount = 10
+lifetime = 0.5
+speed_scale = 0.8
+explosiveness = 0.12
+randomness = 0.3
+process_material = SubResource( 6 )
