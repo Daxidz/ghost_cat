@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/sprites/rooms/cuisine/cui4tab.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/rooms/cuisine/porte_cuisine_hall.png" type="Texture" id=2]
+[ext_resource path="res://player/Cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/environement/Godsray.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/environement/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/environement/Lamp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=7]
+[ext_resource path="res://assets/sprites/rooms/cuisine/lamp_rouge.png" type="Texture" id=8]
+[ext_resource path="res://world/rooms/cuisine/Four.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/environement/Door.gd" type="Script" id=10]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+background_energy = 2.15
+ambient_light_energy = 2.78
+glow_enabled = true
+glow_intensity = 4.15
+glow_strength = 0.53
+glow_bloom = 0.23
+glow_blend_mode = 1
+glow_hdr_threshold = 0.43
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/line_color = Color( 0.423529, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 14, 6 )
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[node name="Cuisine" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.486275, 0.298039, 0.0823529, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 120, 68 )
+texture = ExtResource( 1 )
+
+[node name="Cat" parent="." instance=ExtResource( 3 )]
+position = Vector2( 78, 106 )
+
+[node name="GodsRay" parent="." instance=ExtResource( 4 )]
+position = Vector2( 50.7869, 37.8762 )
+scale = Vector2( -1.40481, 1.48577 )
+energy = 0.38
+HIGH_ENERGY = 0.4
+LOW_ENERGY = 0.2
+
+[node name="Lamp" parent="." instance=ExtResource( 6 )]
+position = Vector2( 197, 31 )
+z_index = 1
+
+[node name="Sprite" parent="Lamp" index="0"]
+position = Vector2( 2, -6 )
+texture = ExtResource( 8 )
+
+[node name="Light2D" parent="Lamp" index="1"]
+position = Vector2( 5, 1 )
+color = Color( 1, 0.996078, 0.988235, 1 )
+energy = 0.8
+
+[node name="Door" parent="." instance=ExtResource( 5 )]
+position = Vector2( 4, -23 )
+script = ExtResource( 10 )
+connected_room = "res://world/rooms/cuisine/Kitchen.tscn"
+
+[node name="Sprite" parent="Door" index="0"]
+material = SubResource( 2 )
+position = Vector2( 201, 72 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( -2, -1, 36, 70 )
+
+[node name="CollisionShape2D" parent="Door" index="1"]
+position = Vector2( 202, 101 )
+shape = SubResource( 3 )
+
+[node name="Four" parent="." instance=ExtResource( 9 )]
+position = Vector2( 146, 73 )
+
+[node name="Sprite" parent="Four" index="0"]
+material = SubResource( 4 )
+
+[node name="Particles2D" parent="Four" index="2"]
+emitting = false
+
+[editable path="Lamp"]
+
+[editable path="Door"]
+
+[editable path="Four"]

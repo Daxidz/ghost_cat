@@ -30,6 +30,7 @@ func _process(delta):
 		$Sprite.flip_h = true
 		
 		
+		
 
 
 func _physics_process(delta):

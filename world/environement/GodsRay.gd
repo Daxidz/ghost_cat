@@ -4,8 +4,8 @@ var rng = RandomNumberGenerator.new()
 
 onready var tween = get_node("Tween")
 
-const HIGH_ENERGY = 0.5
-const LOW_ENERGY = 0.3
+export var HIGH_ENERGY = 0.5
+export var LOW_ENERGY = 0.3
 const TWEEN_MAX_TIME = 4.0
 const TWEEN_MIN_TIME = 2.0
 

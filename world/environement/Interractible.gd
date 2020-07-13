@@ -1,5 +1,9 @@
 extends Node2D
 
+export var connected_room: String
+
+signal door_entered()
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -24,11 +28,13 @@ func outline(is_outlined, fading_time=1):
 	
 	
 	if is_outlined:
-		col1 = Color(1, 1, 1, 0)
-		col2 = Color(1, 1, 1, 1)
+		col1 = outline_col
+		col1.a = 0
+		col2 = outline_col
 	else:
-		col1 = Color(1, 1, 1, 1)
-		col2 = Color(1, 1, 1, 0)
+		col1 = outline_col
+		col2 = outline_col
+		col2.a = 0
 	
 	# Treat the case if we are in off to not get on again
 	if col2 == cur_color:
@@ -53,8 +59,8 @@ func _on_CollisionShape2D_body_entered(body):
 		outline(true, 0.5)
 
 func _on_Hitbox_body_entered(body):
-	print("kek")
 	if (body.is_in_group("player")):
+		print("kek")
 		outline(true, 0.5)
 
 
@@ -72,5 +78,6 @@ func _on_Hitbox_mouse_exited():
 	
 func interact(player):
 	print(player, " is interracting with me (", self, ")")
+	
 	pass
 

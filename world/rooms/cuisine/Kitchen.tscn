@@ -13,7 +13,7 @@
 [ext_resource path="res://world/environement/Godsray.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=12]
 
-[sub_resource type="Environment" id=8]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 ambient_light_color = Color( 0.509804, 0.184314, 0.184314, 1 )
 ambient_light_energy = 0.0
@@ -23,7 +23,7 @@ glow_hdr_threshold = 0.21
 adjustment_enabled = true
 adjustment_brightness = 0.84
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Sprite
 
 # Declare member variables here. Examples:
@@ -39,47 +39,48 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 12 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=4]
 resource_local_to_scene = true
 extents = Vector2( 14, 6 )
 
-[sub_resource type="SegmentShape2D" id=1]
+[sub_resource type="SegmentShape2D" id=5]
 resource_local_to_scene = true
 a = Vector2( 15, 7 )
 b = Vector2( -12, 33 )
 
-[sub_resource type="SegmentShape2D" id=2]
+[sub_resource type="SegmentShape2D" id=6]
 resource_local_to_scene = true
 a = Vector2( 101, 3 )
 b = Vector2( -30, 2 )
 
-[sub_resource type="SegmentShape2D" id=3]
+[sub_resource type="SegmentShape2D" id=7]
 resource_local_to_scene = true
 b = Vector2( -19, 0 )
 
-[sub_resource type="SegmentShape2D" id=4]
+[sub_resource type="SegmentShape2D" id=8]
 resource_local_to_scene = true
 b = Vector2( 0, 22 )
 
-[sub_resource type="SegmentShape2D" id=5]
+[sub_resource type="SegmentShape2D" id=9]
 resource_local_to_scene = true
 b = Vector2( 34, 48 )
 
-[sub_resource type="SegmentShape2D" id=6]
+[sub_resource type="SegmentShape2D" id=10]
 resource_local_to_scene = true
 b = Vector2( 209, -1 )
 
 [node name="Cuisine" type="Node2D"]
+position = Vector2( 104, 59 )
 script = ExtResource( 7 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 8 )
+environment = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -95,7 +96,7 @@ color = Color( 0, 0, 0, 1 )
 script = ExtResource( 10 )
 
 [node name="Four" parent="Interractibles" instance=ExtResource( 6 )]
-position = Vector2( -83, 19 )
+position = Vector2( 21, 78 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -103,7 +104,7 @@ position = Vector2( -83, 19 )
 position = Vector2( 17.4219, 20.9421 )
 
 [node name="Sprite" parent="YSort/Table" index="0"]
-script = SubResource( 7 )
+script = SubResource( 2 )
 
 [node name="Cat" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 60, 16 )
@@ -112,54 +113,55 @@ speed = 50
 
 [node name="Door" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 56, -15 )
+connected_room = "res://world/rooms/cuisine/Cuisine.tscn"
 
 [node name="DoorFront" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 72, 25 )
 
 [node name="Sprite" parent="YSort/DoorFront" index="0"]
-material = SubResource( 9 )
+material = SubResource( 3 )
 
 [node name="CollisionShape2D" parent="YSort/DoorFront" index="1"]
-shape = SubResource( 10 )
+shape = SubResource( 4 )
 
 [node name="Parroies" type="Node" parent="."]
 
 [node name="Blocker" parent="Parroies" instance=ExtResource( 4 )]
-position = Vector2( -71, 5 )
+position = Vector2( 34, 63 )
 
 [node name="Hitbox" parent="Parroies/Blocker" index="0"]
 position = Vector2( 1, -1 )
-shape = SubResource( 1 )
-
-[node name="Blocker2" parent="Parroies" instance=ExtResource( 4 )]
-position = Vector2( -26, 10 )
-
-[node name="Hitbox" parent="Parroies/Blocker2" index="0"]
-shape = SubResource( 2 )
-
-[node name="Blocker3" parent="Parroies" instance=ExtResource( 4 )]
-position = Vector2( -83, 37 )
-
-[node name="Hitbox" parent="Parroies/Blocker3" index="0"]
-shape = SubResource( 3 )
-
-[node name="Blocker4" parent="Parroies" instance=ExtResource( 4 )]
-position = Vector2( -102, 37 )
-
-[node name="Hitbox" parent="Parroies/Blocker4" index="0"]
-shape = SubResource( 4 )
-
-[node name="Blocker5" parent="Parroies" instance=ExtResource( 4 )]
-position = Vector2( 72, 12 )
-
-[node name="Hitbox" parent="Parroies/Blocker5" index="0"]
 shape = SubResource( 5 )
 
+[node name="Blocker2" parent="Parroies" instance=ExtResource( 4 )]
+position = Vector2( 79, 68 )
+
+[node name="Hitbox" parent="Parroies/Blocker2" index="0"]
+shape = SubResource( 6 )
+
+[node name="Blocker3" parent="Parroies" instance=ExtResource( 4 )]
+position = Vector2( 22, 95 )
+
+[node name="Hitbox" parent="Parroies/Blocker3" index="0"]
+shape = SubResource( 7 )
+
+[node name="Blocker4" parent="Parroies" instance=ExtResource( 4 )]
+position = Vector2( 3, 95 )
+
+[node name="Hitbox" parent="Parroies/Blocker4" index="0"]
+shape = SubResource( 8 )
+
+[node name="Blocker5" parent="Parroies" instance=ExtResource( 4 )]
+position = Vector2( 177, 70 )
+
+[node name="Hitbox" parent="Parroies/Blocker5" index="0"]
+shape = SubResource( 9 )
+
 [node name="Blocker6" parent="Parroies" instance=ExtResource( 4 )]
-position = Vector2( -104, 56 )
+position = Vector2( 1, 114 )
 
 [node name="Hitbox" parent="Parroies/Blocker6" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 10 )
 
 [node name="Lamp2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 48, -36 )
@@ -172,6 +174,7 @@ position = Vector2( -57, -34 )
 
 [node name="Light2D" parent="Lamp" index="1"]
 color = Color( 1, 0.945098, 0.878431, 1 )
+energy = 1.36
 
 [node name="GodsRay" parent="." instance=ExtResource( 11 )]
 position = Vector2( 45, -2 )
