@@ -36,7 +36,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 valign = 1
 autowrap = true
-percent_visible = 0.825
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,14 +44,18 @@ __meta__ = {
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 3, 12, 13 )
-patch_margin_left = 7
-patch_margin_top = 6
-patch_margin_right = 5
-patch_margin_bottom = 5
+region_rect = Rect2( 0.562317, 0, 63.4377, 64.4422 )
+patch_margin_left = 26
+patch_margin_top = 25
+patch_margin_right = 19
+patch_margin_bottom = 21
 __meta__ = {
 "_edit_use_anchors_": false
 }

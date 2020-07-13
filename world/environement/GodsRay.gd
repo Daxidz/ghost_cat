@@ -6,8 +6,8 @@ onready var tween = get_node("Tween")
 
 export var HIGH_ENERGY = 0.5
 export var LOW_ENERGY = 0.3
-const TWEEN_MAX_TIME = 4.0
-const TWEEN_MIN_TIME = 2.0
+const TWEEN_MAX_TIME = 6.0
+const TWEEN_MIN_TIME = 4.0
 
 var cur_energy
 
@@ -18,7 +18,7 @@ func _ready():
  
  cur_energy = LOW_ENERGY
  
- tween.interpolate_property(self, "energy", 1.0, 0.5, TWEEN_MAX_TIME, Tween.TRANS_QUINT)
+ tween.interpolate_property(self, "energy", HIGH_ENERGY, LOW_ENERGY, TWEEN_MAX_TIME, Tween.TRANS_QUINT)
  tween.start()
 
 
