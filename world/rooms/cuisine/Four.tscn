@@ -87,4 +87,4 @@ randomness = 0.3
 process_material = SubResource( 6 )
 
 [node name="Position2D" type="Position2D" parent="." index="3"]
-position = Vector2( 18, -21 )
+position = Vector2( 4.4483, -13.7736 )

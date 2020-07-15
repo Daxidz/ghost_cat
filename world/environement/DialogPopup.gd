@@ -1,12 +1,12 @@
-extends CanvasLayer
+extends MarginContainer
 
 signal closed()
 
 
 
-onready var label = get_node("VBoxContainer/Label")
+onready var label = get_node("MarginContainer/Label")
 onready var timer = get_node("Timer")
-onready var ninerect = get_node("VBoxContainer/Label/NinePatchRect")
+onready var ninerect = get_node("NinePatchRect")
 
 var step = 0.0
 var nb_visible = 0
@@ -41,7 +41,7 @@ func _on_Timer_timeout():
 	
 func start():
 	print(text)
-	get_node("VBoxContainer").visible = true
+	visible = true
 	timer.start(text_speed)
 	
 	text_lenght = text.length()
@@ -50,3 +50,7 @@ func start():
 		return
 	
 	step = 1.0 / text_lenght
+	
+func stop():
+	label.text = ""	
+	visible = false

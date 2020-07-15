@@ -12,14 +12,14 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
-background_energy = 2.15
-ambient_light_energy = 2.78
+background_energy = 2.08
 glow_enabled = true
-glow_intensity = 4.15
-glow_strength = 0.53
-glow_bloom = 0.23
-glow_blend_mode = 1
-glow_hdr_threshold = 0.43
+glow_intensity = 1.01
+glow_strength = 0.74
+glow_bloom = 0.06
+glow_blend_mode = 0
+glow_hdr_threshold = 0.26
+adjustment_enabled = true
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -69,33 +69,38 @@ position = Vector2( 2, -6 )
 texture = ExtResource( 8 )
 
 [node name="Light2D" parent="Lamp" index="1"]
-position = Vector2( 5, 1 )
+position = Vector2( 2.12576, 3.13083 )
 color = Color( 1, 0.996078, 0.988235, 1 )
 energy = 0.8
 
 [node name="Door" parent="." instance=ExtResource( 5 )]
-position = Vector2( 4, -23 )
+position = Vector2( 199.416, 45.6597 )
 connected_room = "res://world/rooms/cuisine/Kitchen.tscn"
+outline_col = Color( 0.6, 0.054902, 0.360784, 1 )
 
 [node name="Sprite" parent="Door" index="0"]
 material = SubResource( 2 )
-position = Vector2( 201, 72 )
+position = Vector2( 5.58395, 2.3403 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( -2, -1, 36, 70 )
 
 [node name="CollisionShape2D" parent="Door" index="1"]
-position = Vector2( 202, 101 )
+position = Vector2( 6.58395, 37.3403 )
 shape = SubResource( 3 )
 
 [node name="Four" parent="." instance=ExtResource( 9 )]
 position = Vector2( 146, 73 )
+outline_col = Color( 0.729412, 0.00392157, 0.396078, 1 )
 
 [node name="Sprite" parent="Four" index="0"]
 material = SubResource( 4 )
 
 [node name="Particles2D" parent="Four" index="2"]
 emitting = false
+
+[node name="Position2D" parent="Four" index="3"]
+position = Vector2( -34, 29 )
 
 [editable path="Lamp"]
 
