@@ -9,10 +9,6 @@ export var text = "Mhhhh ça sent bon! Je ne savais pas qu'un régiment était p
 
 var can_display = true
 
-func _ready():
-	interact(null)
-
-
 func interact(body):
 	if not can_display:
 		return
@@ -28,19 +24,6 @@ func interact(body):
 	outline(false, 0)
 	$Sprite/AnimationPlayer.play("open")
 
-#func interact(body):
-#	if not can_display:
-#		return
-#	can_display = false
-#	var speech = $SpeechBubble
-#	speech.text = text
-#	speech.connect("closed", self, "_on_Speech_closed")
-##	get_node("/root/Main/UI").add_child(speech)
-#
-##	speech.offset = $Position2D.global_position*6
-#	speech.start()
-#	outline(false, 0)
-#	$Sprite/AnimationPlayer.play("open")
 
 func _on_Speech_closed():
 	can_display = true

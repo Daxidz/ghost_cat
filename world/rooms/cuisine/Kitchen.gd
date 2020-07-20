@@ -15,8 +15,6 @@ func set_camera_limit():
 	$Camera2D.limit_top = -limits.y / 2
 	$Camera2D.limit_bottom = limits.y / 2
 	
-	
-	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

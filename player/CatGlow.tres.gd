@@ -10,14 +10,13 @@ onready var tween = get_node("Tween")
 #var color1 = Color.blue
 #var color2 = Color.black
 
-var color1 = Color8(5, 239, 251, 220)
+export var color1 = Color8(5, 239, 251, 220)
 var color2 = Color8(5, 239, 251, 20)
 
 var cur_base_color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("idle")
 
 	cur_base_color = color1
 	tween.interpolate_property(material, "shader_param/line_color", color1, color2, 2, Tween.TRANS_LINEAR, Tween.EASE_IN)

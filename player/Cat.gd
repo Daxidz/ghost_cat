@@ -1,20 +1,34 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var animationtree
+var anim_state_machine
 
 var interactibles  = []
+var rng = RandomNumberGenerator.new()
 
 export var speed = 100 
 
 var velocity
 
-# Called when the node enters the scene tree for the first time.
+var cur_anim = ""
+
+onready var lickTimer = $LickTimer
+
+func start_lick_timer():
+	var time = rng.randi_range(8, 15)
+	lickTimer.start(time)
+
 func _ready():
-	pass # Replace with function body.
+	rng.randomize()
+	anim_state_machine = $Sprite/AnimationTree.get("parameters/playback")
+	cur_anim = "idle"
+	anim_state_machine.start(cur_anim)
+	start_lick_timer()
+	
+	
 	
 func _process(delta):
+	
 	if Input.is_action_just_pressed("ui_accept"):
 		if interactibles.size() > 0:
 			print(interactibles)
@@ -29,8 +43,17 @@ func _process(delta):
 	elif (velocity.x < 0):
 		$Sprite.flip_h = true
 		
+	var next_anim = ""
+	if velocity == Vector2.ZERO:
+		next_anim = "idle"
+	else:
+		next_anim = "walking"
 		
-		
+	
+	if next_anim != "" && next_anim != cur_anim:
+		anim_state_machine.travel(next_anim)
+		cur_anim = next_anim
+		print(cur_anim)	
 
 
 func _physics_process(delta):
@@ -55,3 +78,9 @@ func _on_Area2D_area_entered(area):
 func _on_Area2D_area_exited(area):
 	if (area.is_in_group("interractible")):
 		interactibles.erase(area)
+
+
+func _on_LickTimer_timeout():
+	if cur_anim == "idle":
+		start_lick_timer()
+		anim_state_machine.travel("licking")
