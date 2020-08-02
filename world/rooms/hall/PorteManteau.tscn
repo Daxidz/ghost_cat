@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sprites/rooms/hall/port_manteau.png" type="Texture" id=1]
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/rooms/hall/PorteManteau.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="Animation" id=1]
+resource_name = "drop_hat"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 0.366021 ),
+"update": 0,
+"values": [ 0, 6 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 12.5
+height = 0.0
+
+[node name="PorteManteau" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 3 )
+texture = ExtResource( 1 )
+hframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="1"]
+anims/drop_hat = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -22, 60 )
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+position = Vector2( -89, -21 )

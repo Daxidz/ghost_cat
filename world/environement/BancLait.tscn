@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://world/rooms/cuisine/BancLait.gd" type="Script" id=1]
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/rooms/cuisine/chariot_lait.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/rooms/cuisine/banc_droit.png" type="Texture" id=4]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=5]
+
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 4.14435
+height = 0.399902
+
+[sub_resource type="Animation" id=2]
+resource_name = "chariot"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.3, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 12, 0 ]
+}
+
+[node name="BancLait" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -12.1884, 17.5657 )
+shape = SubResource( 3 )
+
+[node name="ChariotLait" type="Sprite" parent="." index="2"]
+position = Vector2( -56.4995, 6.96682 )
+texture = ExtResource( 3 )
+hframes = 13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ChariotLait" index="0"]
+anims/chariot = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="." index="3"]
+position = Vector2( -43.3766, -32.2636 )

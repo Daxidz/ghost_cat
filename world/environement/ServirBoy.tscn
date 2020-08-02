@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://world/rooms/cuisine/ServirBoy.gd" type="Script" id=1]
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/rooms/cuisine/servir_boy.png" type="Texture" id=3]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
+
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 13.7775
+height = 0.211952
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 10.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 7.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="ServirBoy" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -18.039, 23.445 )
+shape = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="." index="2"]
+position = Vector2( 5.36446, -23.3512 )
+emitting = false
+amount = 14
+lifetime = 2.0
+process_material = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="." index="3"]
+position = Vector2( -36.5654, -28.3203 )

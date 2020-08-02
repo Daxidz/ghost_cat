@@ -25,10 +25,15 @@ func _ready():
 	anim_state_machine.start(cur_anim)
 	start_lick_timer()
 	
-	
+func change_y_size():
+	var new_scale = 0
+	new_scale = 0.8 + 0.2 *(global_position.y/120)
+	scale.x = new_scale
+	scale.y = new_scale
+
 	
 func _process(delta):
-	
+#	change_y_size()
 	if Input.is_action_just_pressed("ui_accept"):
 		if interactibles.size() > 0:
 			print(interactibles)

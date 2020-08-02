@@ -1,0 +1,130 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://world/environement/Lamp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Cat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/rooms/cuisine/lampe_cuisine2.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/rooms/cuisine/cuisine2.png" type="Texture" id=4]
+[ext_resource path="res://world/rooms/cuisine/Table.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/rooms/cuisine/table_cuisine2.png" type="Texture" id=6]
+[ext_resource path="res://world/environement/ArmoireVin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/environement/BancLait.tscn" type="PackedScene" id=8]
+[ext_resource path="res://world/environement/Godsray.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/environement/InvisibleExit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=11]
+[ext_resource path="res://world/environement/ServirBoy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://world/environement/Blockers.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 0.96
+glow_bloom = 0.39
+glow_hdr_threshold = 0.0
+adjustment_enabled = true
+
+[sub_resource type="OccluderPolygon2D" id=2]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -22.3973, -26.744, 51.2235, -26.5293, 72.9019, -17.7292, -28.6217, -18.3731 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 11 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 52.1118, 2.24075 )
+
+[node name="Cuisine2" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 120, 68 )
+texture = ExtResource( 4 )
+
+[node name="BancLait" parent="." instance=ExtResource( 8 )]
+position = Vector2( 205.962, 96.0042 )
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 144.445, 116.908 )
+
+[node name="ServirBoy2" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 80.0974, -5.93852 )
+
+[node name="Cat" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( -5.87404, 5.10084 )
+
+[node name="Table" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -0.67868, -7.23246 )
+z_index = 1
+
+[node name="Sprite" parent="YSort/Table" index="0"]
+position = Vector2( 1.20969, -0.734436 )
+texture = ExtResource( 6 )
+
+[node name="RigidBody2D" parent="YSort/Table" index="2"]
+position = Vector2( 0.549683, 7.4959 )
+
+[node name="CollisionShape2D2" parent="YSort/Table/RigidBody2D" index="0"]
+position = Vector2( 0.504152, 0.000946045 )
+
+[node name="LightOccluder2D" parent="YSort/Table" index="3"]
+position = Vector2( -20.1009, -6.20203 )
+occluder = SubResource( 2 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.486275, 0.356863, 0.223529, 1 )
+
+[node name="GodsRay" parent="." instance=ExtResource( 9 )]
+position = Vector2( 132.951, 72.2929 )
+
+[node name="Lamp" parent="." instance=ExtResource( 1 )]
+position = Vector2( 134.026, 26.9754 )
+
+[node name="Sprite" parent="Lamp" index="0"]
+texture = ExtResource( 3 )
+
+[node name="Light2D" parent="Lamp" index="1"]
+position = Vector2( -0.0917811, 10.7977 )
+energy = 0.84
+
+[node name="LightOccluder2D" parent="Lamp" index="2"]
+position = Vector2( -0.471741, 16.1544 )
+occluder = SubResource( 3 )
+
+[node name="InvisibleExit" parent="." instance=ExtResource( 10 )]
+use_parent_material = true
+position = Vector2( 141.694, 122.418 )
+z_index = 2
+connected_room = "res://world/rooms/cuisine/Cuisine.tscn"
+
+[node name="Sprite" parent="InvisibleExit" index="0"]
+material = SubResource( 4 )
+
+[node name="CollisionShape2D" parent="InvisibleExit" index="1"]
+position = Vector2( -6.25858, 10.2641 )
+shape = SubResource( 5 )
+
+[node name="ArmoireVin" parent="." instance=ExtResource( 7 )]
+position = Vector2( 84.5221, 93.5205 )
+
+[node name="Blockers" parent="." instance=ExtResource( 13 )]
+position = Vector2( 84.5221, 93.5205 )
+
+[node name="CollisionPolygon2D" parent="Blockers" index="0"]
+polygon = PoolVector2Array( -50.082, 41.6606, 133.465, 42.7998, 122.073, 37.104, 155.393, 36.5344, 144.571, 25.9972, 146.28, 20.7286, 141.154, 16.8839, 121.788, 18.0231, 116.804, 14.1784, 3.74315, 13.7513, -18.1856, 23.8613, -35.985, 24.2885 )
+
+[editable path="YSort/Table"]
+
+[editable path="Lamp"]
+
+[editable path="InvisibleExit"]
+
+[editable path="Blockers"]

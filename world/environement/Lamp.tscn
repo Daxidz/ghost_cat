@@ -3,11 +3,9 @@
 [ext_resource path="res://assets/sprites/misc/lamp.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/misc/Vqv8F4X.png" type="Texture" id=2]
 
-
-
-
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -16, 0, 16, 0, 3, -9, -1, -9 )
+resource_local_to_scene = true
+polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
 
 [node name="Lamp" type="Node2D"]
 

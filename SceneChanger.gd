@@ -23,6 +23,11 @@ func goto_scene(path):
 
 func _deferred_goto_scene(path):
 	
+	var root = get_tree().get_root()
+	var ui = root.get_node("Main/UI")
+	for elem in ui.get_children():
+		elem.queue_free()
+	
 	current_scene = room_holder.get_child(0)
 	# It is now safe to remove the current scene
 	current_scene.free()

@@ -5,13 +5,12 @@
 [ext_resource path="res://assets/sprites/player/player.png" type="Texture" id=3]
 [ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
 
-[sub_resource type="ShaderMaterial" id=22]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -27,7 +26,7 @@ tracks/0/keys = {
 "values": [ 5, 8, 5 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=3]
 resource_name = "licking"
 loop = true
 tracks/0/type = "value"
@@ -43,8 +42,7 @@ tracks/0/keys = {
 "values": [ 17, 20 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "sitting"
+[sub_resource type="Animation" id=4]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -59,7 +57,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=5]
 resource_name = "to_licking"
 length = 0.3
 tracks/0/type = "value"
@@ -75,7 +73,7 @@ tracks/0/keys = {
 "values": [ 14, 16 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -90,59 +88,59 @@ tracks/0/keys = {
 "values": [ 9, 13 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "licking"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "sitting"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "to_licking"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "walking"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=6]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
-[sub_resource type="AnimationNodeStateMachine" id=8]
-states/idle/node = SubResource( 12 )
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/idle/node = SubResource( 7 )
 states/idle/position = Vector2( 581, 248 )
-states/licking/node = SubResource( 17 )
+states/licking/node = SubResource( 8 )
 states/licking/position = Vector2( 401, 96 )
-states/sitting/node = SubResource( 4 )
+states/sitting/node = SubResource( 9 )
 states/sitting/position = Vector2( 837, 241 )
-states/to_licking/node = SubResource( 18 )
+states/to_licking/node = SubResource( 10 )
 states/to_licking/position = Vector2( 401, 277 )
-states/walking/node = SubResource( 5 )
+states/walking/node = SubResource( 11 )
 states/walking/position = Vector2( 707, 96 )
-transitions = [ "walking", "sitting", SubResource( 6 ), "sitting", "walking", SubResource( 7 ), "sitting", "idle", SubResource( 13 ), "idle", "walking", SubResource( 14 ), "idle", "to_licking", SubResource( 19 ), "to_licking", "licking", SubResource( 20 ), "licking", "walking", SubResource( 21 ) ]
+transitions = [ "walking", "sitting", SubResource( 12 ), "sitting", "walking", SubResource( 13 ), "sitting", "idle", SubResource( 14 ), "idle", "walking", SubResource( 15 ), "idle", "to_licking", SubResource( 16 ), "to_licking", "licking", SubResource( 17 ), "licking", "walking", SubResource( 18 ) ]
 start_node = "walking"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 5, 3 )
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 5, 0.999999 )
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 6, 1 )
 
 [node name="Cat" type="KinematicBody2D" groups=[
 "player",
@@ -152,27 +150,27 @@ script = ExtResource( 2 )
 speed = 60
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 22 )
+material = SubResource( 1 )
 texture = ExtResource( 3 )
 hframes = 21
-frame = 19
+frame = 10
 script = ExtResource( 1 )
 color1 = Color( 1, 1, 1, 0.862745 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/idle = SubResource( 1 )
-anims/licking = SubResource( 16 )
-anims/sitting = SubResource( 2 )
-anims/to_licking = SubResource( 15 )
-anims/walking = SubResource( 3 )
+anims/idle = SubResource( 2 )
+anims/licking = SubResource( 3 )
+anims/sitting = SubResource( 4 )
+anims/to_licking = SubResource( 5 )
+anims/walking = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="Sprite"]
 
 [node name="AnimationTree" type="AnimationTree" parent="Sprite"]
-tree_root = SubResource( 8 )
+tree_root = SubResource( 19 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 9 )
+parameters/playback = SubResource( 20 )
 
 [node name="Area2D" type="Area2D" parent="." groups=[
 "player",
@@ -180,13 +178,19 @@ parameters/playback = SubResource( 9 )
 
 [node name="HurtBox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1, 9 )
-shape = SubResource( 10 )
+shape = SubResource( 21 )
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 1, 11 )
-shape = SubResource( 11 )
+shape = SubResource( 22 )
 
 [node name="LickTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 720
+limit_bottom = 135
 [connection signal="tween_completed" from="Sprite/Tween" to="Sprite" method="_on_Tween_tween_completed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]

@@ -9,7 +9,8 @@
 extents = Vector2( 27.8032, 3 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -32.6059, -10.1188, 31.1937, -2.62925, 96.6576, -7.62226, 94.9932, 4.30548, 23.4268, 7.35677, -14.5756, 4.86026, -30, 0 )
+resource_local_to_scene = true
+polygon = PoolVector2Array( -187, -15, 54, -12, 123, -5, 118, 0, 23.4268, 7.35677, -140, 10, -324, 5, -369, -3, -338, -9 )
 
 [node name="Table" instance=ExtResource( 2 )]
 

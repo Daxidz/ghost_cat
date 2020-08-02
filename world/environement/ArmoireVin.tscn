@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ArmoireVin.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/rooms/cuisine/armoire_cuisine2.png" type="Texture" id=2]
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[node name="ArmoireVin" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 2 )
+hframes = 6
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -2.24296, 21.8179 )
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+anims/open = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="." index="3"]
+position = Vector2( 36.9069, -30.5858 )
