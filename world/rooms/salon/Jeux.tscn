@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sprites/rooms/salon/jeux.png" type="Texture" id=1]
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/rooms/salon/Jeux.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "jeux"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 23, 10 )
+
+[node name="Jeux" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+anims/jeux = SubResource( 1 )
+
+[node name="Sprite" parent="." index="1"]
+material = SubResource( 3 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 2, 52 )
+shape = SubResource( 2 )

@@ -76,8 +76,19 @@ func _on_Hitbox_mouse_entered():
 func _on_Hitbox_mouse_exited():
 	outline(false, 0.5)
 	
-func interact(player):
-	print(player, " is interracting with me (", self, ")")
 	
-	pass
+var can_display = true
 
+func interact(player):
+	if not can_display:
+		player.can_move = true
+		return
+	player.can_move = false
+	
+#func _process(delta):
+#	if Input.is_action_just_pressed("ui_accept"):
+#		var col = get_ov
+#	pass
+
+func stop():
+	can_display = true

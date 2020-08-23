@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/sprites/rooms/hall/hub.png" type="Texture" id=1]
 [ext_resource path="res://player/Cat.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=9]
 [ext_resource path="res://world/rooms/hall/PorteOrdi.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/rooms/hall/TracesDrift.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/sprites/misc/Vqv8F4X.png" type="Texture" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -23,7 +24,7 @@ glow_hdr_scale = 1.27
 
 [sub_resource type="OccluderPolygon2D" id=2]
 resource_local_to_scene = true
-polygon = PoolVector2Array( -8.31674, -6.07708, 9.62019, -5.74492, 6.29853, -17.869, -4.49683, -19.5298 )
+polygon = PoolVector2Array( -55, 0, 28, -2, 9, -7, -7, -7 )
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
@@ -75,7 +76,7 @@ position = Vector2( 120, 67.5 )
 texture = ExtResource( 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.709804, 0.607843, 0.360784, 1 )
+color = Color( 0.529412, 0.462745, 0.301961, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -89,11 +90,11 @@ texture = ExtResource( 3 )
 [node name="Light2D" parent="Lamp" index="1"]
 position = Vector2( -0.99649, 6.89596 )
 texture_scale = 0.57
-color = Color( 0.780392, 0.756863, 0.545098, 1 )
+color = Color( 0.753906, 0.538005, 0.347504, 1 )
 energy = 1.38
 
 [node name="LightOccluder2D" parent="Lamp" index="2"]
-position = Vector2( -0.49826, 11.2936 )
+position = Vector2( -0.246002, 7.69937 )
 occluder = SubResource( 2 )
 
 [node name="Blockers" parent="." instance=ExtResource( 5 )]
@@ -102,9 +103,9 @@ occluder = SubResource( 2 )
 polygon = PoolVector2Array( 240, 135, 240, 119, 240, 113, 231, 111, 227, 106, 199, 106, 193, 102, 183, 102, 192, 112, 157, 112, 165, 103, 165, 98, 160, 95, 160, 88, 146, 77, 141, 75, 99, 75, 98, 84, 86, 84, 85, 88, 50, 88, 55, 78, 55, 74, 31, 74, 0, 88, 0, 135 )
 
 [node name="GodsRay" parent="." instance=ExtResource( 6 )]
-position = Vector2( 110, 63 )
-HIGH_ENERGY = 0.6
-LOW_ENERGY = 0.4
+position = Vector2( 60, 79 )
+texture_scale = 2.0
+HIGH_ENERGY = 0.4
 TWEEN_MAX_TIME = 8.0
 TWEEN_MIN_TIME = 7.0
 
@@ -170,6 +171,14 @@ material = SubResource( 9 )
 [node name="CollisionShape2D" parent="InvisibleExit3" index="1"]
 position = Vector2( 15, 8 )
 shape = SubResource( 10 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 268, 105 )
+texture = ExtResource( 12 )
+color = Color( 0.890196, 0.65098, 0.184314, 1 )
+energy = 1.27
+mode = 2
+shadow_enabled = true
 
 [editable path="Lamp"]
 

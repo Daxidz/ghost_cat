@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mama_chant.wav-6e15c9f754e857bcf8664076196f3add.sample"
+
+[deps]
+
+source_file="res://assets/sounds/fx/mama_chant.wav"
+dest_files=[ "res://.import/mama_chant.wav-6e15c9f754e857bcf8664076196f3add.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

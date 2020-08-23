@@ -4,13 +4,22 @@ const Speech = preload("res://SpeechBubble.tscn")
 
 export var text = "Mais quels mystères cette armoire peut-elle bien cacher?\nOula j'ésprère que Dédée ne boit pas trop!"
 
-var can_display = true
 
+var speech
+
+func stop():
+	can_display = true
+	$AnimationPlayer.stop()
+	$Sprite.frame = 0
+	speech.stop()
+	
 func interact(body):
+	.interact(body)
 	if not can_display:
+		stop()
 		return
 	can_display = false
-	var speech = Speech.instance()
+	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
 	get_node("/root/Main/UI").add_child(speech)

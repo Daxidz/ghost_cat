@@ -137,23 +137,23 @@ start_node = "walking"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
 [sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 5, 3 )
+extents = Vector2( 2, 2 )
 
 [sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 6, 1 )
+extents = Vector2( 2, 2 )
 
 [node name="Cat" type="KinematicBody2D" groups=[
 "player",
 ]]
 z_index = 1
 script = ExtResource( 2 )
-speed = 60
+speed = 40
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
 texture = ExtResource( 3 )
 hframes = 21
-frame = 10
+frame = 12
 script = ExtResource( 1 )
 color1 = Color( 1, 1, 1, 0.862745 )
 
@@ -187,6 +187,7 @@ shape = SubResource( 22 )
 [node name="LickTimer" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -2, 0 )
 limit_left = 0
 limit_top = 0
 limit_right = 720

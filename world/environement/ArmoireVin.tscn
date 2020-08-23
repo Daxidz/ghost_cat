@@ -11,10 +11,9 @@ shader = ExtResource( 4 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 
-[sub_resource type="Animation" id=2]
-resource_name = "open"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -38,10 +37,10 @@ hframes = 6
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( -2.24296, 21.8179 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-anims/open = SubResource( 2 )
+anims/open = SubResource( 3 )
 
 [node name="Position2D" type="Position2D" parent="." index="3"]
 position = Vector2( 36.9069, -30.5858 )

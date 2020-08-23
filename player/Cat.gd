@@ -6,13 +6,15 @@ var anim_state_machine
 var interactibles  = []
 var rng = RandomNumberGenerator.new()
 
-export var speed = 100 
+export var speed = 50 
 
 var velocity
 
 var cur_anim = ""
 
 onready var lickTimer = $LickTimer
+
+var can_move = true
 
 func start_lick_timer():
 	var time = rng.randi_range(8, 15)
@@ -40,7 +42,6 @@ func _process(delta):
 			var interactible = interactibles.front()
 			print(interactible)
 			if (interactible.has_method("interact")):
-				print("I'm interacting with ", interactible)
 				interactible.interact(self)
 	
 	if (velocity.x > 0):
@@ -58,10 +59,11 @@ func _process(delta):
 	if next_anim != "" && next_anim != cur_anim:
 		anim_state_machine.travel(next_anim)
 		cur_anim = next_anim
-		print(cur_anim)	
 
 
 func _physics_process(delta):
+	if not can_move:
+		return
 	var input_direction = Vector2.ZERO
 	
 	input_direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -69,7 +71,7 @@ func _physics_process(delta):
 	
 	velocity = input_direction.normalized() * speed
 	
-	move_and_slide(velocity)
+	move_and_collide(velocity * delta)
 	
 
 

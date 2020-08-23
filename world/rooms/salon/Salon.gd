@@ -4,3 +4,8 @@ extends Node2D
 func _ready():
 	$Cat/Camera2D.current = true
 
+
+
+func _on_Salon_tree_exited():
+	print("topreoijerf")
+	$Cat/Camera2D.current = false

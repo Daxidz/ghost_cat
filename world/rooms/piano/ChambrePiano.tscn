@@ -12,29 +12,9 @@
 [ext_resource path="res://world/environement/Godsray.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/environement/Lamp.tscn" type="PackedScene" id=11]
 
-[sub_resource type="OccluderPolygon2D" id=10]
+[sub_resource type="OccluderPolygon2D" id=1]
 resource_local_to_scene = true
 polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
-
-[sub_resource type="ShaderMaterial" id=8]
-resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 1.0
-
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 14.0
-height = 0.0
-
-[sub_resource type="Environment" id=1]
-background_mode = 4
-glow_enabled = true
-glow_intensity = 0.72
-glow_strength = 0.41
-glow_bloom = 1.0
-glow_blend_mode = 0
-glow_hdr_threshold = 0.55
-glow_hdr_luminance_cap = 15.78
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
@@ -43,27 +23,55 @@ shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="CapsuleShape2D" id=3]
+radius = 14.0
+height = 0.0
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.31
+glow_strength = 0.41
+glow_bloom = 0.5
+glow_blend_mode = 0
+glow_hdr_threshold = 0.55
+glow_hdr_luminance_cap = 15.78
+adjustment_enabled = true
+adjustment_brightness = 0.96
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="CapsuleShape2D" id=6]
 height = 10.0
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
 shader = ExtResource( 6 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=8]
 height = 1.52588e-05
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
 shader = ExtResource( 6 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 7, 3 )
 
 [node name="ChambrePiano" type="Node2D"]
+
+[node name="GodsRay" parent="." instance=ExtResource( 10 )]
+position = Vector2( 103, 75 )
+rotation = -3.14159
+scale = Vector2( 2, -1.49261 )
+offset = Vector2( 0, 0 )
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( 120, 67.5 )
@@ -79,33 +87,29 @@ position = Vector2( 101, 18 )
 energy = 0.48
 mode = 0
 
-[node name="GodsRay" parent="Lamp/Light2D" index="0" instance=ExtResource( 10 )]
-position = Vector2( 2, 60.2969 )
-scale = Vector2( -2, 2 )
-
 [node name="LightOccluder2D" parent="Lamp" index="2"]
-occluder = SubResource( 10 )
+occluder = SubResource( 1 )
 
 [node name="Piano" parent="." instance=ExtResource( 9 )]
 position = Vector2( 85.5, 76 )
 outline_col = Color( 1, 0.192157, 0.87451, 1 )
 
 [node name="Sprite" parent="Piano" index="0"]
-material = SubResource( 8 )
+material = SubResource( 2 )
 frame = 0
 
 [node name="CollisionShape2D" parent="Piano" index="1"]
 position = Vector2( 9.49999, 28 )
-shape = SubResource( 9 )
+shape = SubResource( 3 )
 
 [node name="Position2D" parent="Piano" index="2"]
 position = Vector2( -59.5, 26 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.913725, 0.792157, 0.580392, 1 )
+color = Color( 0.816406, 0.68149, 0.446472, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 4 )
 
 [node name="Blockers" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -120,11 +124,11 @@ rotation = -1.5708
 connected_room = "res://world/rooms/hall/Hall.tscn"
 
 [node name="Sprite" parent="Porte" index="0"]
-material = SubResource( 2 )
+material = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="Porte" index="1"]
 position = Vector2( -21, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="Couverture" parent="." instance=ExtResource( 2 )]
 position = Vector2( 154.5, 103 )
@@ -132,11 +136,11 @@ z_index = 3
 outline_col = Color( 0.792157, 0, 0.905882, 1 )
 
 [node name="Sprite" parent="Couverture" index="0"]
-material = SubResource( 4 )
+material = SubResource( 7 )
 
 [node name="CollisionShape2D" parent="Couverture" index="1"]
 position = Vector2( 37.5, 13 )
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="Cat" parent="." instance=ExtResource( 5 )]
 position = Vector2( 124, 101 )
@@ -145,11 +149,11 @@ position = Vector2( 124, 101 )
 position = Vector2( 89, 114 )
 
 [node name="Sprite" parent="Jouets" index="0"]
-material = SubResource( 6 )
+material = SubResource( 9 )
 
 [node name="CollisionShape2D" parent="Jouets" index="1"]
 position = Vector2( -29, 7 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="Lit" type="Sprite" parent="."]
 position = Vector2( 120, 120 )

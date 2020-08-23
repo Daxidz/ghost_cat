@@ -2,15 +2,21 @@ extends "res://world/environement/Interractible.gd"
 const Speech = preload("res://SpeechBubble.tscn")
 
 
-export var text = "Ces jeunes qui ne respectent même plus l'interdiction de déraper en fauteuil roulant...\nAller juste un ptit tour pendant que Dédée ne voit pas!'"
+export var text = "Ces jeunes qui ne respectent même plus l'interdiction de déraper en fauteuil roulant...\n...\n...\nAller juste un ptit tour pendant que Dédée ne voit pas!'"
 
-var can_display = true
+var speech
 
+func stop():
+	can_display = true
+	speech.stop()
+	
 func interact(body):
+	.interact(body)
 	if not can_display:
+		stop()
 		return
 	can_display = false
-	var speech = Speech.instance()
+	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
 	get_node("/root/Main/UI").add_child(speech)

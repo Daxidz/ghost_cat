@@ -11,11 +11,10 @@ shader = ExtResource( 4 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 18.7542, 4.50632 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "open"
+[sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -42,7 +41,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=4]
 lifetime_randomness = 0.24
 emission_shape = 2
 emission_box_extents = Vector3( 3, 2, 1 )
@@ -67,12 +66,15 @@ hframes = 4
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( -0.209351, 12.2468 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-anims/open = SubResource( 2 )
+anims/open = SubResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="." index="3"]
 position = Vector2( -8.26923, -7.53652 )
 emitting = false
-process_material = SubResource( 3 )
+process_material = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="." index="4"]
+position = Vector2( 66.8303, -1.29642 )

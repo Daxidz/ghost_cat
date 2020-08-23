@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://world/environement/Lamp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Cat.tscn" type="PackedScene" id=2]
@@ -13,31 +13,39 @@
 [ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=11]
 [ext_resource path="res://world/environement/ServirBoy.tscn" type="PackedScene" id=12]
 [ext_resource path="res://world/environement/Blockers.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/sprites/misc/Vqv8F4X.png" type="Texture" id=14]
+[ext_resource path="res://world/environement/FenetreSapins.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 0.2
-glow_strength = 0.96
-glow_bloom = 0.39
+glow_intensity = 1.19
+glow_strength = 0.68
+glow_bloom = 0.53
 glow_hdr_threshold = 0.0
 adjustment_enabled = true
 
-[sub_resource type="OccluderPolygon2D" id=2]
-resource_local_to_scene = true
-polygon = PoolVector2Array( -22.3973, -26.744, 51.2235, -26.5293, 72.9019, -17.7292, -28.6217, -18.3731 )
-
-[sub_resource type="OccluderPolygon2D" id=3]
-resource_local_to_scene = true
-polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
-
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=3]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -22.3973, -26.744, 51.2235, -26.5293, 72.9019, -17.7292, -28.6217, -18.3731 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 11 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 52.1118, 2.24075 )
 
 [node name="Cuisine2" type="Node2D"]
@@ -51,6 +59,12 @@ texture = ExtResource( 4 )
 
 [node name="BancLait" parent="." instance=ExtResource( 8 )]
 position = Vector2( 205.962, 96.0042 )
+
+[node name="Sprite" parent="BancLait" index="0"]
+material = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="BancLait" index="1"]
+position = Vector2( -7.47282, 15.3466 )
 
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( 144.445, 116.908 )
@@ -77,13 +91,17 @@ position = Vector2( 0.504152, 0.000946045 )
 
 [node name="LightOccluder2D" parent="YSort/Table" index="3"]
 position = Vector2( -20.1009, -6.20203 )
-occluder = SubResource( 2 )
+occluder = SubResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.486275, 0.356863, 0.223529, 1 )
 
 [node name="GodsRay" parent="." instance=ExtResource( 9 )]
-position = Vector2( 132.951, 72.2929 )
+position = Vector2( 99.7069, 82.9907 )
+texture_scale = 2.0
+
+[node name="FenetreSapins" parent="." instance=ExtResource( 15 )]
+position = Vector2( 136, 40 )
 
 [node name="Lamp" parent="." instance=ExtResource( 1 )]
 position = Vector2( 134.026, 26.9754 )
@@ -92,12 +110,12 @@ position = Vector2( 134.026, 26.9754 )
 texture = ExtResource( 3 )
 
 [node name="Light2D" parent="Lamp" index="1"]
-position = Vector2( -0.0917811, 10.7977 )
+position = Vector2( 8.88005, 11.0016 )
 energy = 0.84
 
 [node name="LightOccluder2D" parent="Lamp" index="2"]
 position = Vector2( -0.471741, 16.1544 )
-occluder = SubResource( 3 )
+occluder = SubResource( 4 )
 
 [node name="InvisibleExit" parent="." instance=ExtResource( 10 )]
 use_parent_material = true
@@ -106,20 +124,28 @@ z_index = 2
 connected_room = "res://world/rooms/cuisine/Cuisine.tscn"
 
 [node name="Sprite" parent="InvisibleExit" index="0"]
-material = SubResource( 4 )
+material = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="InvisibleExit" index="1"]
 position = Vector2( -6.25858, 10.2641 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="ArmoireVin" parent="." instance=ExtResource( 7 )]
 position = Vector2( 84.5221, 93.5205 )
 
 [node name="Blockers" parent="." instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 84.5221, 93.5205 )
 
 [node name="CollisionPolygon2D" parent="Blockers" index="0"]
 polygon = PoolVector2Array( -50.082, 41.6606, 133.465, 42.7998, 122.073, 37.104, 155.393, 36.5344, 144.571, 25.9972, 146.28, 20.7286, 141.154, 16.8839, 121.788, 18.0231, 116.804, 14.1784, 3.74315, 13.7513, -18.1856, 23.8613, -35.985, 24.2885 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 36.453, 188.53 )
+texture = ExtResource( 14 )
+color = Color( 0.886275, 0.694118, 0.419608, 1 )
+
+[editable path="BancLait"]
 
 [editable path="YSort/Table"]
 

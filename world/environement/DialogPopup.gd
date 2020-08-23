@@ -20,11 +20,11 @@ func _ready():
 	start()
 	label.percent_visible = 1
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		timer.stop()
-		emit_signal("closed")
-		queue_free()
+#func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		timer.stop()
+#		emit_signal("closed")
+#		queue_free()
 
 
 func _on_Timer_timeout():
@@ -54,3 +54,4 @@ func start():
 func stop():
 	label.text = ""	
 	visible = false
+	queue_free()

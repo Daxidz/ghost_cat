@@ -240,6 +240,7 @@ position = Vector2( 78, 106 )
 
 [node name="Rampe" parent="YSort" instance=ExtResource( 12 )]
 position = Vector2( 48.8476, 129.953 )
+connected_room = "res://world/Terasse.tscn"
 outline_col = Color( 0.137255, 0.823529, 0.0392157, 1 )
 
 [node name="Evier" parent="YSort" instance=ExtResource( 13 )]

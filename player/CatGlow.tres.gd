@@ -11,7 +11,7 @@ onready var tween = get_node("Tween")
 #var color2 = Color.black
 
 export var color1 = Color8(5, 239, 251, 220)
-var color2 = Color8(5, 239, 251, 20)
+export var color2 = Color8(5, 239, 251, 20)
 
 var cur_base_color
 

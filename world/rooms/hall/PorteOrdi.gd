@@ -4,13 +4,20 @@ const Speech = preload("res://SpeechBubble.tscn")
 
 export var text = "Je pourrais aller ici, mais je sais écrire un mail tout seul!"
 
-var can_display = true
 
+var speech
+
+func stop():
+	can_display = true
+	speech.stop()
+	
 func interact(body):
+	.interact(body)
 	if not can_display:
+		stop()
 		return
 	can_display = false
-	var speech = Speech.instance()
+	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
 	get_node("/root/Main/UI").add_child(speech)

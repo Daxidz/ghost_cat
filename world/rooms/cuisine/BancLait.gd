@@ -4,13 +4,21 @@ const Speech = preload("res://SpeechBubble.tscn")
 
 export var text = "Devrait y avoir quelques bérlingots...\nHa oui une bonne réserve en effet!!"
 
-var can_display = true
+var speech
 
+func stop():
+	can_display = true
+	$ChariotLait.frame = 0
+	$ChariotLait/AnimationPlayer.stop()
+	speech.stop()
+	
 func interact(body):
+	.interact(body)
 	if not can_display:
+		stop()
 		return
 	can_display = false
-	var speech = Speech.instance()
+	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
 	get_node("/root/Main/UI").add_child(speech)
