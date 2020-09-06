@@ -22,12 +22,13 @@ func interact(body):
 	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
-	get_node("/root/Main/UI").add_child(speech)
+	get_node("/root/Main/UI/Texts").add_child(speech)
 	
 	speech.rect_position.x = 500
 	speech.rect_position.y = $Position2D.global_position.y*6
 	speech.rect_size.x = 330
 	
+	get_node("/root/Main/AudioStreamPlayer").stream = load("res://assets/sounds/fx/mama_chant.wav")
 	get_node("/root/Main/AudioStreamPlayer").play()
 	
 	#speech.start()

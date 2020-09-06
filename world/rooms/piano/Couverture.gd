@@ -2,7 +2,7 @@ extends "res://world/environement/Interractible.gd"
 const Speech = preload("res://SpeechBubble.tscn")
 
 
-export var text = "Pour une bonne nuit il faut:\n  Une chanson\n  Un bisou\n  4 tonnes de couvertures piquantes\n\nBonne nuit!"
+export var text = "Pour un bon dodo il faut:\n  Une chanson\n  Un bisou\n  4 tonnes de couvertures piquantes\n\nBonne nuit!"
 
 
 var speech
@@ -20,7 +20,7 @@ func interact(body):
 	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
-	get_node("/root/Main/UI").add_child(speech)
+	get_node("/root/Main/UI/Texts").add_child(speech)
 
 	speech.rect_position = $Position2D.global_position*6
 	speech.rect_size.x = 331

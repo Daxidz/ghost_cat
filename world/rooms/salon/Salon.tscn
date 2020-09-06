@@ -73,8 +73,9 @@ texture = ExtResource( 3 )
 position = Vector2( -1, 7 )
 scale = Vector2( 1, 1 )
 texture = SubResource( 1 )
-texture_scale = 1.49
-energy = 1.02
+texture_scale = 0.77
+color = Color( 1, 0.8, 0.635294, 1 )
+energy = 1.21
 
 [node name="LightOccluder2D" parent="Lamp" index="2"]
 occluder = SubResource( 2 )
@@ -154,7 +155,7 @@ position = Vector2( -68, -30 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 420, 20 )
 texture = ExtResource( 12 )
-color = Color( 1, 0.72549, 0.572549, 1 )
+color = Color( 0.888668, 0.890625, 0.640137, 1 )
 energy = 0.5
 
 [node name="LumiereF1" type="Light2D" parent="."]

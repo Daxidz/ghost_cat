@@ -21,7 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneChanger="*res://SceneChanger.gd"
+SceneChanger="*res://SceneChanger.tscn"
 
 [debug]
 
@@ -95,6 +95,6 @@ ui_down={
 [rendering]
 
 quality/2d/use_pixel_snap=true
-environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_clear_color=Color( 0.6, 0.6, 0.6, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

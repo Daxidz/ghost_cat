@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 
 export var speed = 50 
 
-var velocity
+var velocity = Vector2.ZERO
 
 var cur_anim = ""
 

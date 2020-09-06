@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://world/environement/Interractible.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/rooms/terasse/Couteau.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/rooms/terasse/couteau.png" type="Texture" id=3]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 1.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17, 15 )
+
+[node name="Couteau" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+outline_col = Color( 0.764706, 0.2, 0.901961, 1 )
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -15, -3 )
+shape = SubResource( 2 )

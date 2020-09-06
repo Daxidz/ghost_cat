@@ -21,7 +21,7 @@ func interact(body):
 	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
-	get_node("/root/Main/UI").add_child(speech)
+	get_node("/root/Main/UI/Texts").add_child(speech)
 	
 	speech.rect_position.x = 500
 	speech.rect_position.y = 200

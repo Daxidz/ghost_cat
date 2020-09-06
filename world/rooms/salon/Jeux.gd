@@ -2,7 +2,7 @@ extends "res://world/environement/Interractible.gd"
 const Speech = preload("res://SpeechBubble.tscn")
 
 
-export var text = "Puissance 4, Uno, Jenga... Nous disposons de vos tous jeux rêvés et plus encore!"
+export var text = "Puissance 4, Uno, Jenga... Nous disposons de tous vos jeux rêvés et plus encore!"
 
 
 var speech
@@ -21,7 +21,7 @@ func interact(body):
 	speech = Speech.instance()
 	speech.text = text
 	speech.connect("closed", self, "_on_Speech_closed")
-	get_node("/root/Main/UI").add_child(speech)
+	get_node("/root/Main/UI/Texts").add_child(speech)
 	
 	speech.rect_position.x = 600
 	speech.rect_position.x = 600

@@ -22,5 +22,4 @@ func _on_Tween_tween_all_completed():
 	$Tween.stop_all()
 	$Tween.interpolate_property(self, "texture_scale", cur_brightness, dst_brightness, TWEEN_TIME, Tween.TRANS_SINE)
 	$Tween.start()
-	print("kek")
 	cur_brightness = dst_brightness
