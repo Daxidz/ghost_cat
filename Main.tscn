@@ -38,8 +38,9 @@ __meta__ = {
 }
 
 [node name="TitleScreen" parent="UI" instance=ExtResource( 1 )]
-rect_scale = Vector2( 8, 8 )
 size_flags_horizontal = 2
+
+[node name="Pause" type="CanvasLayer" parent="UI"]
 
 [node name="SceneFader" parent="UI" instance=ExtResource( 5 )]
 anchor_right = 0.0
