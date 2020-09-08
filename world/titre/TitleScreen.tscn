@@ -68,7 +68,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-first_room = "res://world/rooms/terasse/Pergola.tscn"
+first_room = "res://world/Terasse.tscn"
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( 119.719, 67.9909 )
@@ -119,7 +119,6 @@ text = "Quitter"
 position = Vector2( 211.189, 70.1585 )
 frames = SubResource( 10 )
 animation = "sitting"
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

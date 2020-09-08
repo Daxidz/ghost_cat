@@ -31,10 +31,13 @@ radius = 9.43398
 [sub_resource type="Environment" id=3]
 background_mode = 4
 glow_enabled = true
+glow_levels/2 = true
 glow_intensity = 0.05
-glow_strength = 1.38
+glow_strength = 0.9
 glow_bloom = 0.2
+glow_blend_mode = 0
 glow_hdr_threshold = 0.05
+glow_hdr_scale = 0.73
 adjustment_brightness = 0.45
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
