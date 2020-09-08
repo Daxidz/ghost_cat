@@ -75,13 +75,13 @@ environment = SubResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2( 120, 68 )
-color = Color( 0.152941, 0.152941, 0.192157, 1 )
+color = Color( 0.231373, 0.231373, 0.27451, 1 )
 
 [node name="Cat" parent="." instance=ExtResource( 4 )]
 position = Vector2( 50, 113 )
 
 [node name="Sprite" parent="Cat" index="0"]
-frame = 11
+frame = 9
 color1 = Color( 0.494118, 0, 0.670588, 0.792157 )
 color2 = Color( 0.384314, 0, 0.439216, 0.294118 )
 
@@ -196,7 +196,7 @@ position = Vector2( 216, 54 )
 [node name="InvisibleExit" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.407843, 0.647059, 0.227451, 1 )
 position = Vector2( 42, 125 )
-connected_room = "res://world/rooms/cuisine/Kitchen.tscn"
+connected_room = "res://world/rooms/terasse/Pergola.tscn"
 
 [node name="Sprite" parent="InvisibleExit" index="0"]
 modulate = Color( 0.113725, 0.854902, 0.176471, 1 )

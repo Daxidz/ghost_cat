@@ -3,6 +3,8 @@ extends Control
 var current_button_idx
 var nb_buttons
 
+export(String, FILE, "*.tscn") var first_room
+
 func _ready():
 	nb_buttons = $Buttons.get_child_count()
 	current_button_idx = 0
@@ -35,7 +37,7 @@ func _process(delta):
 #		$Buttons.get_child(current_button_idx).press()
 		
 func _on_Start_pressed():
-	SceneChanger.goto_scene("res://world/rooms/hall/Hall.tscn")
+	SceneChanger.goto_scene(first_room)
 	self.queue_free()
 	
 func _on_Quit_pressed():
