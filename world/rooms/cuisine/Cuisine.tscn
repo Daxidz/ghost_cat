@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/sprites/rooms/cuisine/cuisine1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/rooms/cuisine/porte_cuisine_hall.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://world/rooms/cuisine/Rampe.tscn" type="PackedScene" id=12]
 [ext_resource path="res://world/environement/Evier.tscn" type="PackedScene" id=13]
 [ext_resource path="res://world/environement/InvisibleExit.tscn" type="PackedScene" id=14]
+[ext_resource path="res://world/rooms/cuisine/Cuisine.gd" type="Script" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -105,6 +106,7 @@ resource_local_to_scene = true
 polygon = PoolVector2Array( -27.1701, -13.6081, 54.4511, -16.6882, 95.5184, -13.6081, 94.4917, -1.80128, 36.9975, 3.84547, 6.71039, 3.84547, -19.9833, -2.31464, -36.8192, -6.42577, -32.3035, -8.98807 )
 
 [node name="Cuisine" type="Node2D"]
+script = ExtResource( 15 )
 
 [node name="InvisibleExit" parent="." instance=ExtResource( 14 )]
 position = Vector2( 22.4405, 71.389 )
@@ -238,7 +240,9 @@ occluder = SubResource( 17 )
 [node name="Cat" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 78, 106 )
 
-[node name="Rampe" parent="YSort" instance=ExtResource( 12 )]
+[node name="Rampe" parent="YSort" groups=[
+"interractible",
+] instance=ExtResource( 12 )]
 position = Vector2( 48.8476, 129.953 )
 connected_room = "res://world/Terasse.tscn"
 outline_col = Color( 0.137255, 0.823529, 0.0392157, 1 )

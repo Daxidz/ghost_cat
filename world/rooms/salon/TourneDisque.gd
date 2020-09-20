@@ -28,8 +28,8 @@ func interact(body):
 	speech.rect_position.y = $Position2D.global_position.y*6
 	speech.rect_size.x = 330
 	
-	get_node("/root/Main/AudioStreamPlayer").stream = load("res://assets/sounds/fx/mama_chant.wav")
-	get_node("/root/Main/AudioStreamPlayer").play()
+	get_node("/root/Main/SFX").stream = load("res://assets/sounds/fx/mama_chant.wav")
+	get_node("/root/Main/SFX").play()
 	
 	#speech.start()
 	outline(false, 0)

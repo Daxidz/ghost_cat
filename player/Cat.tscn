@@ -181,7 +181,7 @@ position = Vector2( 1, 9 )
 shape = SubResource( 21 )
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 11 )
+position = Vector2( 1, 9 )
 shape = SubResource( 22 )
 
 [node name="LickTimer" type="Timer" parent="."]

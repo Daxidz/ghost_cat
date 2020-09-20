@@ -8,11 +8,13 @@ func _ready():
 	
 	
 func _on_Hitbox_body_entered(body):
+	._on_Hitbox_body_entered(body)
 	if (body.is_in_group("player")):
 		$DirectionalArrow.visible = true
 
 
 func _on_Hitbox_body_exited(body):
+	._on_Hitbox_body_exited(body)
 	if (body.is_in_group("player")):
 		$DirectionalArrow.visible = false
 		

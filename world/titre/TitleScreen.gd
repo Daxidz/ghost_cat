@@ -38,7 +38,7 @@ func _process(delta):
 		
 func _on_Start_pressed():
 	SceneChanger.goto_scene(first_room)
-	self.queue_free()
+	get_tree().root.get_node("Main").remove_title_screen()
 	
 func _on_Quit_pressed():
 	get_tree().quit()

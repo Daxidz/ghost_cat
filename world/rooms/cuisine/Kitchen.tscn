@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://world/rooms/cuisine/Table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world/environement/DoorFront.tscn" type="PackedScene" id=2]
@@ -38,41 +38,53 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="OccluderPolygon2D" id=3]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -187, -15, 54, -12, 123, -5, 118, 0, 23.4268, 7.35677, -140, 10, -324, 5, -369, -3, -338, -9 )
+
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 12 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 resource_local_to_scene = true
 extents = Vector2( 14, 6 )
 
-[sub_resource type="SegmentShape2D" id=5]
+[sub_resource type="SegmentShape2D" id=6]
 resource_local_to_scene = true
 a = Vector2( 15, 7 )
 b = Vector2( -12, 33 )
 
-[sub_resource type="SegmentShape2D" id=6]
+[sub_resource type="SegmentShape2D" id=7]
 resource_local_to_scene = true
 a = Vector2( 101, 3 )
 b = Vector2( -30, 2 )
 
-[sub_resource type="SegmentShape2D" id=7]
+[sub_resource type="SegmentShape2D" id=8]
 resource_local_to_scene = true
 b = Vector2( -19, 0 )
 
-[sub_resource type="SegmentShape2D" id=8]
+[sub_resource type="SegmentShape2D" id=9]
 resource_local_to_scene = true
 b = Vector2( 0, 22 )
 
-[sub_resource type="SegmentShape2D" id=9]
+[sub_resource type="SegmentShape2D" id=10]
 resource_local_to_scene = true
 b = Vector2( 34, 48 )
 
-[sub_resource type="SegmentShape2D" id=10]
+[sub_resource type="SegmentShape2D" id=11]
 resource_local_to_scene = true
 b = Vector2( 209, -1 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
+
+[sub_resource type="OccluderPolygon2D" id=13]
+resource_local_to_scene = true
+polygon = PoolVector2Array( -21, -7, 22, -6, 11, -19, -9, -22 )
 
 [node name="Cuisine" type="Node2D"]
 position = Vector2( 104, 59 )
@@ -102,6 +114,9 @@ position = Vector2( 17.4219, 20.9421 )
 [node name="Sprite" parent="YSort/Table" index="0"]
 script = SubResource( 2 )
 
+[node name="LightOccluder2D" parent="YSort/Table" index="3"]
+occluder = SubResource( 3 )
+
 [node name="Cat" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 60, 16 )
 z_index = 0
@@ -115,10 +130,10 @@ connected_room = "res://world/rooms/cuisine/Cuisine.tscn"
 position = Vector2( 72, 25 )
 
 [node name="Sprite" parent="YSort/DoorFront" index="0"]
-material = SubResource( 3 )
+material = SubResource( 4 )
 
 [node name="CollisionShape2D" parent="YSort/DoorFront" index="1"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Parroies" type="Node" parent="."]
 
@@ -127,37 +142,37 @@ position = Vector2( 34, 63 )
 
 [node name="Hitbox" parent="Parroies/Blocker" index="0"]
 position = Vector2( 1, -1 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Blocker2" parent="Parroies" instance=ExtResource( 4 )]
 position = Vector2( 79, 68 )
 
 [node name="Hitbox" parent="Parroies/Blocker2" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Blocker3" parent="Parroies" instance=ExtResource( 4 )]
 position = Vector2( 22, 95 )
 
 [node name="Hitbox" parent="Parroies/Blocker3" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="Blocker4" parent="Parroies" instance=ExtResource( 4 )]
 position = Vector2( 3, 95 )
 
 [node name="Hitbox" parent="Parroies/Blocker4" index="0"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Blocker5" parent="Parroies" instance=ExtResource( 4 )]
 position = Vector2( 177, 70 )
 
 [node name="Hitbox" parent="Parroies/Blocker5" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Blocker6" parent="Parroies" instance=ExtResource( 4 )]
 position = Vector2( 1, 114 )
 
 [node name="Hitbox" parent="Parroies/Blocker6" index="0"]
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="Lamp2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 48, -36 )
@@ -165,12 +180,18 @@ position = Vector2( 48, -36 )
 [node name="Light2D" parent="Lamp2" index="1"]
 color = Color( 1, 0.815686, 0.690196, 1 )
 
+[node name="LightOccluder2D" parent="Lamp2" index="2"]
+occluder = SubResource( 12 )
+
 [node name="Lamp" parent="." instance=ExtResource( 3 )]
 position = Vector2( -57, -34 )
 
 [node name="Light2D" parent="Lamp" index="1"]
 color = Color( 1, 0.945098, 0.878431, 1 )
 energy = 1.36
+
+[node name="LightOccluder2D" parent="Lamp" index="2"]
+occluder = SubResource( 13 )
 
 [node name="GodsRay" parent="." instance=ExtResource( 11 )]
 position = Vector2( 45, -2 )

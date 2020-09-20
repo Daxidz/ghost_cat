@@ -62,11 +62,13 @@ func _on_Hitbox_body_entered(body):
 	if (body.is_in_group("player")):
 		print("kek")
 		outline(true, 0.5)
+		get_node("/root/Main").show_pattoune(true)
 
 
 func _on_Hitbox_body_exited(body):
 	if (body.is_in_group("player")):
 		outline(false, 0.5)
+		get_node("/root/Main").show_pattoune(false)
 
 func _on_Hitbox_mouse_entered():
 	outline(true, 0.5)

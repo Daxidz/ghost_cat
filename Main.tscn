@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://world/titre/TitleScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/environement/MusicManager.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/fx/mama_chant.wav" type="AudioStream" id=3]
 [ext_resource path="res://world/Main.gd" type="Script" id=4]
 [ext_resource path="res://world/environement/SceneFader.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/misc/pattoune.png" type="Texture" id=6]
+[ext_resource path="res://assets/shaders/outline2D.shader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 7 )
+shader_param/line_color = Color( 1, 0.78125, 0.996582, 1 )
+shader_param/line_thickness = 1.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
@@ -26,21 +34,36 @@ render_target_update_mode = 3
 
 [node name="Texts" type="CanvasLayer" parent="UI"]
 
-[node name="Container" type="Container" parent="UI"]
+[node name="Pause" type="CanvasLayer" parent="UI"]
+
+[node name="Title" type="CanvasLayer" parent="UI"]
+
+[node name="TitleScreen" parent="UI/Title" instance=ExtResource( 1 )]
+size_flags_horizontal = 2
+
+[node name="Container" type="Control" parent="UI"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1920.0
-margin_top = -1080.0
+margin_left = -40.0
+margin_top = -40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleScreen" parent="UI" instance=ExtResource( 1 )]
-size_flags_horizontal = 2
-
-[node name="Pause" type="CanvasLayer" parent="UI"]
+[node name="TextureRect" type="TextureRect" parent="UI/Container"]
+modulate = Color( 1, 1, 1, 0.694118 )
+material = SubResource( 1 )
+margin_left = -84.0
+margin_top = -78.0
+margin_right = -55.0
+margin_bottom = -50.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SceneFader" parent="UI" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -48,7 +71,15 @@ anchor_bottom = 0.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -1.492
 pitch_scale = 1.05
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+volume_db = -13.023
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="Music"]
+[connection signal="tween_all_completed" from="Music/Tween" to="Music" method="_on_Tween_tween_all_completed"]

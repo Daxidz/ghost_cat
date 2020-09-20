@@ -5,11 +5,11 @@ const title_screen = preload("res://world/titre/TitleScreen.tscn")
 const pause_screen = preload("res://world/titre/PauseMenu.tscn")
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var menu_showed = false
+var title_showed = true
+
+#func _ready():
+	
 
 func show_pause_menu():
 	var pause = pause_screen.instance()
@@ -23,7 +23,7 @@ func remove_pause_menu():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		if not menu_showed:
+		if not menu_showed and not title_showed:
 			show_pause_menu()
 		else:
 			$UI/Pause.get_child(0).queue_free()
@@ -32,17 +32,20 @@ func _process(delta):
 func show_title_screen():
 	for elem in $ViewportContainer/Viewport.get_children():
 		elem.queue_free()
-	
-	
+	title_showed = true
 	var title = title_screen.instance()
 	$UI.add_child(title)
+	
+func remove_title_screen():
+	for elem in $UI/Title.get_children():
+		elem.queue_free()
+	title_showed = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	pass # Replace with function body.
+	show_pattoune(false)
+	
+func show_pattoune(show: bool):
+	$UI/Container/TextureRect.visible = show
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

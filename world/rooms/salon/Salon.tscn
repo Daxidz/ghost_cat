@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/sprites/rooms/cuisine/salon.png" type="Texture" id=1]
 [ext_resource path="res://world/environement/Lamp.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://world/rooms/salon/Devoirs.tscn" type="PackedScene" id=16]
 [ext_resource path="res://world/rooms/salon/Jeux.tscn" type="PackedScene" id=17]
 [ext_resource path="res://world/environement/Dessins.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/sprites/rooms/salon/verre_table_ronde.png" type="Texture" id=19]
 
 [sub_resource type="StreamTexture" id=1]
 resource_local_to_scene = true
@@ -54,6 +55,7 @@ shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
 [node name="Salon" type="Node2D"]
+scale = Vector2( 0.999618, 1 )
 script = ExtResource( 8 )
 
 [node name="BG" type="Sprite" parent="."]
@@ -183,6 +185,11 @@ position = Vector2( 439, 124 )
 position = Vector2( -1, 0 )
 polygon = PoolVector2Array( -434, 10, 281, 11, 281, 1, 255, 2, 205, -45, 170, -45, 170, -16, 116, -16, 104, -34, -157, -35, -157, -46, -438, -45 )
 one_way_collision_margin = 0.0
+
+[node name="VerreTableR" type="Sprite" parent="."]
+position = Vector2( 567, 100 )
+z_index = 3
+texture = ExtResource( 19 )
 [connection signal="tree_exited" from="." to="." method="_on_Salon_tree_exited"]
 
 [editable path="Lamp"]

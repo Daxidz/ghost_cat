@@ -68,7 +68,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-first_room = "res://world/Terasse.tscn"
+first_room = "res://world/rooms/hall/Hall.tscn"
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( 119.719, 67.9909 )
@@ -101,13 +101,6 @@ margin_right = 50.4025
 margin_bottom = 30.1408
 text = "Lancer"
 
-[node name="CREDITS" parent="Buttons" instance=ExtResource( 4 )]
-margin_left = 86.7631
-margin_top = 14.5283
-margin_right = 134.301
-margin_bottom = 35.3675
-text = "Crédits"
-
 [node name="QUIT" parent="Buttons" instance=ExtResource( 4 )]
 margin_left = 160.005
 margin_top = 16.0779
@@ -119,6 +112,7 @@ text = "Quitter"
 position = Vector2( 211.189, 70.1585 )
 frames = SubResource( 10 )
 animation = "sitting"
+frame = 5
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

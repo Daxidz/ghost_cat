@@ -29,8 +29,8 @@ func interact(body):
 	
 	speech.rect_size.x = 330
 	
-	get_node("/root/Main/AudioStreamPlayer").stream = load("res://assets/sounds/fx/cowbell-percussion-2.wav")
-	get_node("/root/Main/AudioStreamPlayer").play()
+	get_node("/root/Main/SFX").stream = load("res://assets/sounds/fx/cowbell-percussion-2.wav")
+	get_node("/root/Main/SFX").play()
 	
 	nb_activated += 1
 	if (nb_activated == 3) :

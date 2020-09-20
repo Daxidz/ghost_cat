@@ -2,7 +2,7 @@ extends "res://world/environement/Interractible.gd"
 const Speech = preload("res://SpeechBubble.tscn")
 
 
-export var text = "Mais à quoi peut bien servir un couteau planté dans la terrasse? Se débarasser de ces saleté de chiens du quartier?"
+export var text = "Mais à quoi peut bien servir un couteau planté dans la terrasse? Se débarasser de ces satanés chiens du quartier?"
 
 var speech
 

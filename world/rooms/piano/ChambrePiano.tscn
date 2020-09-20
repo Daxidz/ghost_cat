@@ -23,7 +23,7 @@ shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 14.0
+radius = 16.0
 height = 0.0
 
 [sub_resource type="Environment" id=4]
@@ -54,6 +54,7 @@ shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="CapsuleShape2D" id=8]
+radius = 12.0
 height = 1.52588e-05
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -63,7 +64,7 @@ shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 1.0
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 7, 3 )
+extents = Vector2( 13, 5 )
 
 [node name="ChambrePiano" type="Node2D"]
 
@@ -71,7 +72,6 @@ extents = Vector2( 7, 3 )
 position = Vector2( 103, 75 )
 rotation = -3.14159
 scale = Vector2( 2, -1.49261 )
-offset = Vector2( 0, 0 )
 
 [node name="BG" type="Sprite" parent="."]
 position = Vector2( 120, 67.5 )
@@ -99,7 +99,7 @@ material = SubResource( 2 )
 frame = 0
 
 [node name="CollisionShape2D" parent="Piano" index="1"]
-position = Vector2( 9.49999, 28 )
+position = Vector2( 10.5, 29 )
 shape = SubResource( 3 )
 
 [node name="Position2D" parent="Piano" index="2"]
@@ -152,7 +152,7 @@ position = Vector2( 89, 114 )
 material = SubResource( 9 )
 
 [node name="CollisionShape2D" parent="Jouets" index="1"]
-position = Vector2( -29, 7 )
+position = Vector2( -34, 7 )
 shape = SubResource( 10 )
 
 [node name="Lit" type="Sprite" parent="."]

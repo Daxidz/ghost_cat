@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/sprites/rooms/hall/hub.png" type="Texture" id=1]
 [ext_resource path="res://player/Cat.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://world/rooms/hall/PorteOrdi.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/rooms/hall/TracesDrift.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/sprites/misc/Vqv8F4X.png" type="Texture" id=12]
+[ext_resource path="res://world/rooms/hall/Hall.gd" type="Script" id=13]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -67,6 +68,7 @@ shader_param/line_thickness = 1.0
 height = 6.0
 
 [node name="Hall" type="Node2D"]
+script = ExtResource( 13 )
 
 [node name="Cat" parent="." instance=ExtResource( 2 )]
 position = Vector2( 82.6356, 107.963 )
