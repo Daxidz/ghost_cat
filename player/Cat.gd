@@ -87,7 +87,10 @@ func _on_Area2D_area_exited(area):
 		interactibles.erase(area)
 
 
+var special_anims = ["licking", "etire"]
+
 func _on_LickTimer_timeout():
 	if cur_anim == "idle":
+		var anim_idx = rng.randi_range(0, special_anims.size()-1)
 		start_lick_timer()
-		anim_state_machine.travel("licking")
+		anim_state_machine.travel(special_anims[anim_idx])
