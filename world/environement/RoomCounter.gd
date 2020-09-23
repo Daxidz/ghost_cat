@@ -3,7 +3,7 @@ extends Node
 signal all_rooms_visited
 
 var added_rooms = []
-const NB_ROOMS = 1
+const NB_ROOMS = 7
 
 const rooms_not_accounted = ["res://world/rooms/easterGame/AvoidTheBar.tscn"]
 
