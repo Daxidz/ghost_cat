@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform int angle;
+uniform float width;
+
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if ((UV.x >= UV.y) || (UV.x < UV.y  - 1.0/width))
+	{
+		COLOR.a = 0.0;
+	}
+}
+
+void light() {
+	LIGHT = vec4(1.0, 1.0, 1.0, 1.0);
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/angle = null
+shader_param/width = 2.0
+
+[node name="GodsRay" type="ColorRect"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

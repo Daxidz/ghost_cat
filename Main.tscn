@@ -34,12 +34,12 @@ render_target_update_mode = 3
 
 [node name="Texts" type="CanvasLayer" parent="UI"]
 
-[node name="Pause" type="CanvasLayer" parent="UI"]
-
 [node name="Title" type="CanvasLayer" parent="UI"]
 
 [node name="TitleScreen" parent="UI/Title" instance=ExtResource( 1 )]
 size_flags_horizontal = 2
+
+[node name="Pause" type="CanvasLayer" parent="UI"]
 
 [node name="Container" type="Control" parent="UI"]
 anchor_left = 1.0

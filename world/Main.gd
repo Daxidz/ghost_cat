@@ -26,15 +26,16 @@ func _process(delta):
 		if not menu_showed and not title_showed:
 			show_pause_menu()
 		else:
-			$UI/Pause.get_child(0).queue_free()
-			get_tree().paused = false
+			if $UI/Pause.get_child_count() > 0:
+				$UI/Pause.get_child(0).queue_free()
+				get_tree().paused = false
 
 func show_title_screen():
 	for elem in $ViewportContainer/Viewport.get_children():
 		elem.queue_free()
 	title_showed = true
 	var title = title_screen.instance()
-	$UI.add_child(title)
+	$UI/Title.add_child(title)
 	
 func remove_title_screen():
 	for elem in $UI/Title.get_children():

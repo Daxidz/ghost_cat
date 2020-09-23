@@ -3,6 +3,8 @@ extends Node2D
 var increment = 0.0
 var accept_input = false
 
+var vp
+
 func _ready():
 	get_node("/root/Main/Music").play_theme(3)
 	$Sprite.modulate = Color(0, 0, 0, 1)
@@ -10,6 +12,13 @@ func _ready():
 	$Label/Timer.start(1)
 	increment = 1.0 / $Label.text.length()
 	print(increment)
+	
+	vp = get_tree().get_root().get_node("Main/ViewportContainer/Viewport")
+	
+	vp.size = Vector2(1920, 1080)
+	
+func _exit_tree():
+	vp.size = Vector2(240, 135)
 	
 	
 func _input(event):
